@@ -13,4 +13,11 @@ class TeamController extends Controller
 
         return view('team', ['members' => $members]);
     }
+
+    public function admin_page()
+    {
+        $members = Team::all();
+
+        return view('admin.team', ['members' => $members]);
+    }
 }

@@ -21,4 +21,11 @@ class UserController extends Controller
         print_r("LODU");
         print_r($errors->all());
     }
+
+    public function admin_page()
+    {
+        $users = User::all();
+
+        return view('admin.users', ['users' => $users]);
+    }
 }

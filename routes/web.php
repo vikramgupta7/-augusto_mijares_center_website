@@ -41,6 +41,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
+
+Route::post('/login', 'UserController@login');
+
+
 Route::get('/signup', function () {
     return view('signup');
 });
@@ -63,3 +67,8 @@ Route::get('/admin/team_edit', 'TeamController@admin_edit');
 
 Route::get('/admin/users', 'UserController@admin_page');
 Route::get('/admin/user_edit', 'UserController@admin_edit');
+
+Route::get('/admin/logout', function () {
+    session()->forget('loginData');
+    return redirect('login');
+});

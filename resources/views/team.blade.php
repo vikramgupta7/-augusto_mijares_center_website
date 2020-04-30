@@ -3,7 +3,7 @@
 @include("templates.head")
 <body>
 	@include("templates.navigation")
-	
+	@include("admin.templates.user")
 
 	<div class="container">
 		<div id="top">

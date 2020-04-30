@@ -28,4 +28,14 @@ class UserController extends Controller
 
         return view('admin.users', ['users' => $users]);
     }
+
+
+    public function login(Request $loginData)
+    {
+        $loginData -> session() -> put('loginData', $loginData -> input());
+        $users = User::all();
+        // print_r($users -> input());
+        // print_r($loginData->session('loginData'));
+        return redirect('admin/projects');
+    }
 }

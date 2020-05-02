@@ -20,4 +20,11 @@ class VideoController extends Controller
 
         return view('admin.videos', ['videos' => $videos]);
     }
+
+    public function admin_edit(Request $videosForm)
+    {
+        $videos = Video::all();
+        $videosForm = $videosForm->input();
+        return view('admin.videos_edit', compact('videosForm', 'videos'));
+    }
 }

@@ -20,4 +20,11 @@ class TeamController extends Controller
 
         return view('admin.team', ['members' => $members]);
     }
+
+    public function admin_edit(Request $teamForm)
+    {
+        $members = Team::all();
+        $teamForm = $teamForm->input();
+        return view('admin.team_edit', compact('teamForm', 'members'));
+    }
 }

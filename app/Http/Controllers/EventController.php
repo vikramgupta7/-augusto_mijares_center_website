@@ -22,4 +22,11 @@ class EventController extends Controller
     
             return view('admin.events', ['events' => $events]);
     }
+
+    public function admin_edit(Request $eventsForm)
+    {
+        $events = Event::all();
+        $eventsForm = $eventsForm->input();
+        return view('admin.events_edit', compact('eventsForm', 'events'));
+    }
 }

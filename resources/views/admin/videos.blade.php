@@ -4,7 +4,8 @@
 <body>
 	@include("admin.templates.navigation")
 	@include("admin.templates.user")
-	<form action="" method="post">
+	<form action="videos" method="post">
+	@csrf
 		@for($i=0;$i<count($videos);$i++)
 			<div class="box">
 				<div class="container">

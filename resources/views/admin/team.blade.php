@@ -5,7 +5,8 @@
 
 	@include("admin.templates.navigation")
 	@include("admin.templates.user")
-	<form action="" method="post">
+	<form action="team" method="post">
+	@csrf
 		@for($i=0;$i<count($members);$i++)
 			<div class="box">
 				<div class="container">

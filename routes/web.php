@@ -52,21 +52,20 @@ Route::get('/signup', function () {
 Route::post('/signup', 'UserController@signup');
 
 Route::get('/admin/projects', 'ProjectController@admin_page');
-Route::get('/admin/projects_edit', 'ProjectController@admin_edit');
-
+Route::post('/admin/projects', 'ProjectController@admin_edit');
 
 Route::get('/admin/events', 'EventController@admin_page');
-Route::get('/admin/events_edit', 'EventController@admin_edit');
+Route::post('/admin/events', 'EventController@admin_edit');
 
 Route::get('/admin/videos', 'VideoController@admin_page');
-Route::get('/admin/videos_edit', 'VideoController@admin_edit');
+Route::post('/admin/videos', 'VideoController@admin_edit');
 
 Route::get('/admin/team', 'TeamController@admin_page');
-Route::get('/admin/team_edit', 'TeamController@admin_edit');
+Route::post('/admin/team', 'TeamController@admin_edit');
 
 
 Route::get('/admin/users', 'UserController@admin_page');
-Route::get('/admin/user_edit', 'UserController@admin_edit');
+Route::post('/admin/users', 'UserController@admin_edit');
 
 Route::get('/admin/logout', function () {
     session()->forget('loginData');

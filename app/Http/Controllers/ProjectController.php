@@ -21,11 +21,11 @@ class ProjectController extends Controller
         return view('admin.projects', ['projects' => $projects]);
     }
 
-    public function admin_edit()
+    public function admin_edit(Request $projectsForm)
     {
         $projects = Project::all();
-
-        return view('admin.projects_edit', ['projects' => $projects]);
+        $projectsForm = $projectsForm->input();
+        return view('admin.projects_edit', compact('projectsForm', 'projects'));
     }
 
 }

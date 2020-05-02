@@ -38,4 +38,11 @@ class UserController extends Controller
         // print_r($loginData->session('loginData'));
         return redirect('admin/projects');
     }
+
+    public function admin_edit(Request $userForm)
+    {
+        $users = User::all();
+        $userForm = $userForm->input();
+        return view('admin.users_edit', compact('userForm', 'users'));
+    }
 }

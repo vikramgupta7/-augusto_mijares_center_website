@@ -5,9 +5,11 @@
 <body>
 
 	@include("admin.templates.navigation")
+	@include("admin.templates.user")
+	
 	@if ($videosForm['type']=='edit')
-		<form class="box container" action="videos_edit.php" method="post">
-		@csrf
+		<form class="box container" action="videos_edit" method="post">
+			@csrf
 			Video Title:
 			<br>
 			<input type="text" name="video_title" required="required" value="{{$videos[$videosForm['video_selection']-1]['video_title']}}">
@@ -28,7 +30,8 @@
 			<button type="submit" name="type" value="delete">Delete</button>
 		</form>
 	@elseif ($videosForm['type'] == 'add')
-		<form class="box container" action="videos_edit.php" method="post">
+		<form class="box container" action="videos_edit" method="post">
+			@csrf
 			Video Title:
 			<br>
 			<input type="text" name="video_title" required="required">

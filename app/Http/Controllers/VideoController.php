@@ -27,4 +27,21 @@ class VideoController extends Controller
         $videosForm = $videosForm->input();
         return view('admin.videos_edit', compact('videosForm', 'videos'));
     }
+
+    public function admin_update(Request $updateForm)
+    {
+        if($updateForm->input('type') == 'added')
+        {
+            // print_r($updateForm->input());
+            $video = new Video;
+            $video->page_id = 6;
+            $video->video_title = $updateForm->input('video_title');
+            $video->video_description = $updateForm->input('video_description');
+            $video->video_url = $updateForm->input('video_url');
+            $video->save();
+
+            $videos = Video::all();
+            return view('admin.videos', ['videos' => $videos]);
+        }
+    }
 }

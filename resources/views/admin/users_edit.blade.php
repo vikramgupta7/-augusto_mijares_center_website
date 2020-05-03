@@ -5,9 +5,11 @@
 <body>
 
 	@include("admin.templates.navigation")
+	@include("admin.templates.user")
 	
 	@if ($userForm['type']=='edit')
-		<form class="box container" action="users_edit.php" method="post">
+		<form class="box container" action="users_edit" method="post">
+		@csrf
 			Name:
 			<br>
 			<input type="text" name="user_name" required="required" value="{{$users[$userForm['user_selection']-1]['user_name']}}">
@@ -33,7 +35,8 @@
 			<button type="submit" name="type" value="delete">Delete</button>
 		</form>
 	@elseif ($userForm['type'] == 'add')
-		<form class="box container" action="users_edit.php" method="post">
+		<form class="box container" action="users_edit" method="post">
+			@csrf
 			Name:
 			<br>
 			<input type="text" name="user_name" required="required">

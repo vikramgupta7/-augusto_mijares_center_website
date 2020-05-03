@@ -45,4 +45,22 @@ class UserController extends Controller
         $userForm = $userForm->input();
         return view('admin.users_edit', compact('userForm', 'users'));
     }
+
+    public function admin_update(Request $updateForm)
+    {
+        if($updateForm->input('type') == 'added')
+        {
+            // print_r($updateForm->input());
+            $user = new User;
+            $user->page_id = 9;
+            $user->user_name = $updateForm->input('user_name');
+            $user->user_email = $updateForm->input('user_email');
+            $user->user_password = $updateForm->input('user_password');
+            $user->user_role = $updateForm->input('user_role');
+            $user->save();
+
+            $users = User::all();
+            return view('admin.users', ['users' => $users]);
+        }
+    }
 }

@@ -5,9 +5,11 @@
 <body>
 
 	@include("admin.templates.navigation")
+	@include("admin.templates.user")
 
 	@if($projectsForm['type']=='edit')
-		<form class="box container" action="" method="post">
+		<form class="box container" action="projects_edit" method="post">
+		@csrf
 			Project Name:
 			<br>
 			<input type="text" name="project_name" required="required" value="{{$projects[$projectsForm['project_selection']-1]['project_name']}}">
@@ -28,7 +30,8 @@
 			<button type="submit" name="type" value="delete">Delete</button>
 		</form>
 	@elseif ($projectsForm['type'] == 'add')
-		<form class="box container" action="" method="post">
+		<form class="box container" action="projects_edit" method="post">
+		@csrf
 			Project Name:
 			<br>
 			<input type="text" name="project_name" required="required">

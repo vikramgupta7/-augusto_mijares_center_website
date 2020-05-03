@@ -27,4 +27,24 @@ class TeamController extends Controller
         $teamForm = $teamForm->input();
         return view('admin.team_edit', compact('teamForm', 'members'));
     }
+
+
+    public function admin_update(Request $updateForm)
+    {
+        if($updateForm->input('type') == 'added')
+        {
+            // print_r($updateForm->input());
+            $team = new Team;
+            $team->page_id = 7;
+            $team->member_name = $updateForm->input('member_name');
+            $team->member_desc = $updateForm->input('member_description');
+            $team->member_email = $updateForm->input('member_email');
+            $team->member_phone = $updateForm->input('member_phone');
+            $team->member_image = $updateForm->input('member_image');
+            $team->save();
+
+            $members = team::all();
+            return view('admin.team', ['members' => $members]);
+        }
+    }
 }

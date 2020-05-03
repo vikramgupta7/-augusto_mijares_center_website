@@ -28,4 +28,21 @@ class ProjectController extends Controller
         return view('admin.projects_edit', compact('projectsForm', 'projects'));
     }
 
+
+    public function admin_update(Request $updateForm)
+    {
+        if($updateForm->input('type') == 'added')
+        {
+            $project = new Project;
+            $project->page_id = 4;
+            $project->project_name = $updateForm->input('project_name');
+            $project->project_desc = $updateForm->input('project_description');
+            $project->project_image = $updateForm->input('project_image');
+            $project->save();
+
+            $projects = Project::all();
+            return view('admin.projects', ['projects' => $projects]);
+        }
+    }
+
 }

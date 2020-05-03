@@ -5,8 +5,11 @@
 <body>
 
 	@include("admin.templates.navigation")
+	@include("admin.templates.user")
+	
 	@if ($eventsForm['type']=='edit')
-		<form class="box container" action="" method="post">
+		<form class="box container" action="events_edit" method="post">
+		@csrf
 			Event Title:
 			<br>
 			<input type="text" name="event_title" required="required" value="{{$events[$eventsForm['event_selection']-1]['event_title']}}">
@@ -27,7 +30,8 @@
 			<button type="submit" name="type" value="delete">Delete</button>
 		</form>
 	@elseif ($eventsForm['type'] == 'add')
-		<form class="box container" action="" method="post">
+		<form class="box container" action="events_edit" method="post">
+		@csrf
 			Event Title:
 			<br>
 			<input type="text" name="event_title" required="required">
